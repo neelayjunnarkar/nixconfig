@@ -41,10 +41,6 @@
   home = {
     username = "neelay";
     homeDirectory = "/home/neelay";
-
-    packages = [
-	pkgs.neovim
-    ];
   };
 
   # Add stuff for your user as you see fit:
@@ -53,10 +49,29 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
+
   programs.git = {
     enable = true;
     userName = "Neelay";
     userEmail = "neelay.junnarkar@gmail.com";
+  };
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+    extraConfig = ''
+      set rnu
+    '';
+  };
+
+  programs.firefox = {
+    enable = true;
+  };
+
+  programs.fish = {
+    enable = true;
   };
 
   # Nicely reload system units when changing configs
