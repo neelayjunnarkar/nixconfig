@@ -45,10 +45,70 @@
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  home.packages = with pkgs; [
+    ripgrep
+    fd
+    vscode
+    firefox
+    fish
+    fzf
+    htop
+    tealdeer
+  ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
+
+  dconf.settings = {
+    # Pin applications to desktop bar.
+    "org/gnome/shell" = {
+      favorite-apps = ["firefox.desktop" "org.wezfurlong.wezterm.desktop" "code.desktop"];
+    };
+    # Setup shortcuts for switching workspaces
+    # and moving windows between workspaces.
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      hot-keys = false;
+    };
+    "org/gnome/shell/keybindings" = {
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
+      switch-to-application-5 = [];
+      switch-to-application-6 = [];
+    };
+    "org/gnome/desktop/wm/keybindings" = {
+      switch-to-workspace-1 = ["<Super>1"];
+      switch-to-workspace-2 = ["<Super>2"];
+      switch-to-workspace-3 = ["<Super>3"];
+      switch-to-workspace-4 = ["<Super>4"];
+      switch-to-workspace-5 = ["<Super>5"];
+      switch-to-workspace-6 = ["<Super>6"];
+      move-to-workspace-1 = ["<Shift><Super>1"];
+      move-to-workspace-2 = ["<Shift><Super>2"];
+      move-to-workspace-3 = ["<Shift><Super>3"];
+      move-to-workspace-4 = ["<Shift><Super>4"];
+      move-to-workspace-5 = ["<Shift><Super>5"];
+      move-to-workspace-6 = ["<Shift><Super>6"];
+    };
+    # Swap control and caps lock.
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = ["ctrl:swapcaps"];
+    };
+    # Setup browser shortcut.
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      www = ["<Shift><Super>Return"];
+    };
+    # Setup custom shortcuts.
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal" = {
+      binding = "<Super>Return";
+      command = "wezterm";
+      name = "Terminal";
+    };
+  };
 
   programs.git = {
     enable = true;
@@ -66,12 +126,48 @@
     '';
   };
 
-  programs.firefox = {
+  programs.wezterm = {
     enable = true;
+    extraConfig = ''
+      local wezterm = require 'wezterm'
+      local mux = wezterm.mux
+
+      wezterm.on('gui-attached', function(domain)
+        -- maximize all displayed windows on startup
+        local workspace = mux.get_active_workspace()
+        for _, window in ipairs(mux.all_windows()) do
+          if window:get_workspace() == workspace then
+          window:gui_window():maximize()
+          end
+        end
+      end)
+
+      local config = wezterm.config_builder()
+
+      config.color_scheme = 'Gruvbox dark, hard (base16)'
+      config.window_background_opacity = 0.9
+      config.window_decorations = "RESIZE"
+
+      config.xcursor_size = nil
+      config.xcursor_theme = nil
+
+      local success, stdout, stderr = wezterm.run_child_process({"gsettings", "get", "org.gnome.desktop.interface", "cursor-theme"})
+      if success then
+        config.xcursor_theme = stdout:gsub("'(.+)'\n", "%1")
+      end
+
+      local success, stdout, stderr = wezterm.run_child_process({"gsettings", "get", "org.gnome.desktop.interface", "cursor-size"})
+      if success then
+        config.xcursor_size = tonumber(stdout)
+      end
+
+      return config
+    '';
   };
 
-  programs.fish = {
+  programs.zellij = {
     enable = true;
+    enableFishIntegration = true;
   };
 
   # Nicely reload system units when changing configs

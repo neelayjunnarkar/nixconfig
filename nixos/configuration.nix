@@ -66,7 +66,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # TODO: Set your hostname
-  networking.hostName = "nixos";
+  networking.hostName = "testing";
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Los_Angeles";
@@ -108,7 +108,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -116,7 +116,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   programs.fish.enable = true;
 
@@ -127,7 +127,7 @@
       # TODO: You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
       # Be sure to change it (using passwd) after rebooting!
-      initialPassword = "";
+      # initialPassword = "";
       isNormalUser = true;
       description = "Neelay";
       openssh.authorizedKeys.keys = [
