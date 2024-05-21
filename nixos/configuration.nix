@@ -2,6 +2,7 @@
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
 {
   inputs,
+  outputs,
   lib,
   config,
   pkgs,
@@ -18,7 +19,18 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+
+    # Homemanager as a module 
+    inputs.home-manager.nixosModules.home-manager
   ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs outputs; };
+    users = {
+      # Import your home-manager configuration
+      neelay = import ../home-manager/home.nix;
+    };
+  };
 
   nixpkgs = {
     # You can add overlays here
@@ -66,7 +78,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # TODO: Set your hostname
-  networking.hostName = "testing";
+  networking.hostName = "waffle";
   networking.networkmanager.enable = true;
 
   time.timeZone = "America/Los_Angeles";
@@ -139,6 +151,25 @@
     };
   };
 
+  # stylix.base16Scheme = {
+  #   base00 = “282828”;
+  #   base01 = “3c3836”;
+  #   base02 = “504945”;
+  #   base03 = “665c54”;
+  #   base04 = “bdae93”;
+  #   base05 = “d5c4a1”;
+  #   base06 = “ebdbb2”;
+  #   base07 = “fbf1c7”;
+  #   base08 = “fb4934”;
+  #   base09 = “fe8019”;
+  #   base0A = “fabd2f”;
+  #   base0B = “b8bb26”;
+  #   base0C = “8ec07c”;
+  #   base0D = “83a598”;
+  #   base0E = “d3869b”;
+  #   base0F = “d65d0e”;
+  # };
+  stylix.image = ./background-pics/Earth2k.jpg;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";

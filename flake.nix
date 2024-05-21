@@ -8,12 +8,16 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Stylix for theming.
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    stylix,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -21,22 +25,25 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      testing = nixpkgs.lib.nixosSystem {
+      waffle = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         # > Our main nixos configuration file <
-        modules = [./nixos/configuration.nix];
+        modules = [
+          stylix.nixosModules.stylix
+          ./nixos/configuration.nix
+        ];
       };
     };
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      "neelay@testing" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs;};
-        # > Our main home-manager configuration file <
-        modules = [./home-manager/home.nix];
-      };
-    };
+    # homeConfigurations = {
+    #   "neelay@waffle" = home-manager.lib.homeManagerConfiguration {
+    #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+    #     extraSpecialArgs = {inherit inputs outputs;};
+    #     # > Our main home-manager configuration file <
+    #     modules = [./home-manager/home.nix];
+    #   };
+    # };
   };
 }

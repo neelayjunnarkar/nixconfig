@@ -54,6 +54,8 @@
     fzf
     htop
     tealdeer
+    tree
+    cheat
   ];
 
   # Enable home-manager and git
@@ -91,6 +93,9 @@
       move-to-workspace-5 = ["<Shift><Super>5"];
       move-to-workspace-6 = ["<Shift><Super>6"];
     };
+    "org/gnome/desktop/wm/preferences" = {
+      num-workspaces = 5;
+    };
     # Swap control and caps lock.
     "org/gnome/desktop/input-sources" = {
       xkb-options = ["ctrl:swapcaps"];
@@ -105,7 +110,7 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal" = {
       binding = "<Super>Return";
-      command = "wezterm";
+      command = "wezterm start --always-new-process zellij";
       name = "Terminal";
     };
   };
@@ -123,6 +128,10 @@
     vimAlias = true;
     extraConfig = ''
       set rnu
+
+      set shiftwidth=4 smarttab
+      set expandtab
+      set tabstop=8 softtabstop=0
     '';
   };
 
@@ -132,17 +141,24 @@
       local wezterm = require 'wezterm'
       local mux = wezterm.mux
 
-      wezterm.on('gui-attached', function(domain)
-        -- maximize all displayed windows on startup
-        local workspace = mux.get_active_workspace()
-        for _, window in ipairs(mux.all_windows()) do
-          if window:get_workspace() == workspace then
-          window:gui_window():maximize()
-          end
-        end
+      --wezterm.on('gui-attached', function(domain)
+      --  -- maximize all displayed windows on startup
+      --  local workspace = mux.get_active_workspace()
+      --  for _, window in ipairs(mux.all_windows()) do
+      --    if window:get_workspace() == workspace then
+      --      window:gui_window():maximize()
+      --    end
+      --  end
+      --end)
+
+      wezterm.on('gui-startup', function(cmd)
+        local tab, pane, window = mux.spawn_window(cmd or {})
+        window:gui_window():maximize()
       end)
 
       local config = wezterm.config_builder()
+
+      config.enable_tab_bar = false
 
       config.color_scheme = 'Gruvbox dark, hard (base16)'
       config.window_background_opacity = 0.9
