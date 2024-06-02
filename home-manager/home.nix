@@ -19,6 +19,9 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [
+      (final: prev: {
+        zjstatus = inputs.zjstatus.packages.${prev.system}.default;
+      })
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -50,15 +53,16 @@
     fd
     vscode
     firefox
-    fish
     fzf
     htop
     tealdeer
     tree
     cheat
+    # Use wl-copy and wl-paste to copy/paste in terminal in wayland.
+    wl-clipboard
   ];
 
-  # Enable home-manager and git
+  # Enable home-manager
   programs.home-manager.enable = true;
 
   dconf.settings = {
@@ -93,6 +97,7 @@
       move-to-workspace-5 = ["<Shift><Super>5"];
       move-to-workspace-6 = ["<Shift><Super>6"];
     };
+    # Number of workspaces
     "org/gnome/desktop/wm/preferences" = {
       num-workspaces = 5;
     };
@@ -112,6 +117,11 @@
       binding = "<Super>Return";
       command = "wezterm start --always-new-process zellij";
       name = "Terminal";
+    };
+    # Keyboards
+    "org/gnome/desktop/input-sources" = {
+      sources =  [(lib.hm.gvariant.mkTuple ["xkb" "us+colemak"])  (lib.hm.gvariant.mkTuple ["xkb" "in+marathi"])];
+      mru-sources = [(lib.hm.gvariant.mkTuple ["xkb" "us+colemak"])];
     };
   };
 
@@ -160,7 +170,6 @@
 
       config.enable_tab_bar = false
 
-      config.color_scheme = 'Gruvbox dark, hard (base16)'
       config.window_background_opacity = 0.9
       config.window_decorations = "RESIZE"
 
@@ -184,6 +193,62 @@
   programs.zellij = {
     enable = true;
     enableFishIntegration = true;
+    settings = {
+      ui.pane_frames = {
+        hide_session_name = true;
+        rounded_corners = true;
+      };
+    };
+  };
+
+  xdg.configFile."zellij/layouts/default.kdl".text = ''
+    layout {
+      default_tab_template {
+          children
+          pane size=1 borderless=true {
+              plugin location="file:${pkgs.zjstatus}/bin/zjstatus.wasm" {
+                format_left   "{mode}{tabs}"
+                // format_center "{tabs}"
+                format_right  "{command_git_branch}"
+                format_space  ""
+
+                border_enabled  "false"
+                border_char     "─"
+                border_format   "#[fg=#6C7086]{char}"
+                border_position "top"
+
+                hide_frame_for_single_pane "true"
+
+                mode_normal  "#[bg=blue] "
+                mode_tmux    "#[bg=#ffc387] "
+  
+                tab_normal   "#[fg=#6C7086] {name} "
+                tab_active   "#[fg=#9399B2,bold,italic] {name} "
+
+                command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+                command_git_branch_format      "#[fg=blue] {stdout} "
+                command_git_branch_interval    "10"
+                command_git_branch_rendermode  "static"
+              }
+          }
+      }
+    }
+  '';
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      # Remove greeting from fish.
+      set fish_greeting
+    '';
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      line_break.disabled = true;
+    };
   };
 
   # Nicely reload system units when changing configs

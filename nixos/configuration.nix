@@ -103,8 +103,8 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "colemak";
+    xkb.layout = "us";
+    xkb.variant = "colemak";
   };
 
   # Enable CUPS to print documents.
@@ -128,13 +128,12 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   programs.fish.enable = true;
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
-    # FIXME: Replace with your username
     neelay = {
       # TODO: You can set an initial password for your user.
       # If you do, you can skip setting a root password by passing '--no-root-passwd' to nixos-install.
@@ -151,25 +150,19 @@
     };
   };
 
-  # stylix.base16Scheme = {
-  #   base00 = “282828”;
-  #   base01 = “3c3836”;
-  #   base02 = “504945”;
-  #   base03 = “665c54”;
-  #   base04 = “bdae93”;
-  #   base05 = “d5c4a1”;
-  #   base06 = “ebdbb2”;
-  #   base07 = “fbf1c7”;
-  #   base08 = “fb4934”;
-  #   base09 = “fe8019”;
-  #   base0A = “fabd2f”;
-  #   base0B = “b8bb26”;
-  #   base0C = “8ec07c”;
-  #   base0D = “83a598”;
-  #   base0E = “d3869b”;
-  #   base0F = “d65d0e”;
-  # };
-  stylix.image = ./background-pics/Earth2k.jpg;
+  # environment.systemPackages = with pkgs; [
+  #   base16-schemes
+  # ];
+
+  stylix = {
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
+    image = ./../background-pics/Earth2k.jpg;
+    fonts.monospace = {
+      package = pkgs.fira-code;
+      name = "Fira Code"; 
+    };
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";
