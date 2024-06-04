@@ -3,14 +3,14 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Stylix for theming.
-    stylix.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix/release-23.11";
 
     # Status bar for zellij
     zjstatus.url = "github:dj95/zjstatus";

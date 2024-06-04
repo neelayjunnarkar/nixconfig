@@ -103,8 +103,8 @@
 
   # Configure keymap in X11
   services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "colemak";
+    layout = "us";
+    xkbVariant = "colemak";
   };
 
   # Enable CUPS to print documents.
@@ -128,7 +128,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   programs.fish.enable = true;
 
@@ -165,5 +165,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.05";
+  system.stateVersion = "23.11";
 }
