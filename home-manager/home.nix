@@ -51,7 +51,6 @@
   home.packages = with pkgs; [
     ripgrep
     fd
-    vscode
     firefox
     fzf
     htop
@@ -60,6 +59,9 @@
     cheat
     # Use wl-copy and wl-paste to copy/paste in terminal in wayland.
     wl-clipboard
+    restic
+    signal-desktop
+    zotero
   ];
 
   # Enable home-manager
@@ -96,14 +98,25 @@
       move-to-workspace-4 = ["<Shift><Super>4"];
       move-to-workspace-5 = ["<Shift><Super>5"];
       move-to-workspace-6 = ["<Shift><Super>6"];
+      # Alt-tab for switching windows, not applications
+      cycle-windows = ["<Alt>Tab"];
+      cycle-windows-backward = ["<Shift><Alt>Tab"];
+      switch-applications = [];
+      switch-applications-backward = [];
+      # Screenshot
+      show-screenshot-ui = ["<Shift><Super>s"];
     };
     # Number of workspaces
     "org/gnome/desktop/wm/preferences" = {
       num-workspaces = 5;
     };
+    # Enable drag windows to side/top to semi-/maximize.
+    "org/gnome/mutter" = {
+      edge-tiling = true;
+    };
     # Swap control and caps lock.
     "org/gnome/desktop/input-sources" = {
-      xkb-options = ["ctrl:swapcaps"];
+#       xkb-options = ["ctrl:swapcaps"];
     };
     # Setup browser shortcut.
     "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -120,8 +133,17 @@
     };
     # Keyboards
     "org/gnome/desktop/input-sources" = {
-      sources =  [(lib.hm.gvariant.mkTuple ["xkb" "us+colemak"])  (lib.hm.gvariant.mkTuple ["xkb" "in+marathi"])];
+      sources =  [
+        (lib.hm.gvariant.mkTuple ["xkb" "us+colemak"])
+        (lib.hm.gvariant.mkTuple ["xkb" "in+marathi"])
+        (lib.hm.gvariant.mkTuple ["xkb" "us"])
+      ];
+      # TODO: What is mru-sources?
       mru-sources = [(lib.hm.gvariant.mkTuple ["xkb" "us+colemak"])];
+    };
+    # Disable mouse acceleration
+    "org/gnome/desktop/peripherals/mouse" = {
+        accel-profile = "flat";
     };
   };
 
@@ -139,7 +161,7 @@
     extraConfig = ''
       set rnu
 
-      set shiftwidth=4 smarttab
+      set shiftwidth=2 smarttab
       set expandtab
       set tabstop=8 softtabstop=0
     '';
@@ -208,8 +230,8 @@
           pane size=1 borderless=true {
               plugin location="file:${pkgs.zjstatus}/bin/zjstatus.wasm" {
                 format_left   "{mode}{tabs}"
-                // format_center "{tabs}"
-                format_right  "{command_git_branch}"
+                format_center ""
+                format_right  ""
                 format_space  ""
 
                 border_enabled  "false"
@@ -219,16 +241,11 @@
 
                 hide_frame_for_single_pane "true"
 
-                mode_normal  "#[bg=blue] "
-                mode_tmux    "#[bg=#ffc387] "
+                mode_normal  "#[fg=blue]●︎"
+                mode_tmux    "#[fg=#ffc387]●︎"
   
                 tab_normal   "#[fg=#6C7086] {name} "
                 tab_active   "#[fg=#9399B2,bold,italic] {name} "
-
-                command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
-                command_git_branch_format      "#[fg=blue] {stdout} "
-                command_git_branch_interval    "10"
-                command_git_branch_rendermode  "static"
               }
           }
       }
@@ -251,9 +268,24 @@
     };
   };
 
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode.fhs;
+    extensions = with pkgs.vscode-extensions; [
+      mgt19937.typst-preview
+      nvarner.typst-lsp
+      yzhang.markdown-all-in-one
+      tomoki1207.pdf
+      bbenoist.nix
+    ];
+  };
+
+  # Unclear if this is doiing anything.
+  stylix.targets.firefox.enable = false;
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 }

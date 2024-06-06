@@ -103,8 +103,8 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "colemak";
+    xkb.layout = "us";
+    xkb.variant = "colemak";
   };
 
   # Enable CUPS to print documents.
@@ -128,7 +128,7 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   programs.fish.enable = true;
 
@@ -155,15 +155,39 @@
   # ];
 
   stylix = {
+    polarity = "dark";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
+    base16Scheme = {
+      base00 = "0F1419";
+      base01 = "131721";
+      base02 = "272D38"; # This one is causing contrast issues.
+      base03 = "3E4B59";
+      base04 = "BFBDB6";
+      base05 = "E6E1CF";
+      base06 = "E6E1CF";
+      base07 = "F3F4F5";
+      base08 = "F07178";
+      base09 = "FF8F40";
+      base0A = "FFB454";
+      base0B = "B8CC52";
+      base0C = "95E6CB";
+      base0D = "59C2FF";
+      base0E = "D2A6FF";
+      base0F = "E6B673";
+    };
     image = ./../background-pics/Earth2k.jpg;
     fonts.monospace = {
-      package = pkgs.fira-code;
-      name = "Fira Code"; 
+      package = pkgs.cascadia-code;
+      name = "Cascadia Code NF";
+    };
+    targets.gnome.enable = false;
+    cursor = {
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
     };
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }
