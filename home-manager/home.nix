@@ -9,11 +9,9 @@
 }: {
   # You can import other home-manager modules here
   imports = [
+    ./modules
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
   ];
 
   nixpkgs = {
@@ -22,6 +20,7 @@
       (final: prev: {
         zjstatus = inputs.zjstatus.packages.${prev.system}.default;
       })
+      inputs.nix-matlab.overlay  
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -51,17 +50,28 @@
   home.packages = with pkgs; [
     ripgrep
     fd
-    firefox
-    fzf
-    htop
     tealdeer
     tree
     cheat
+    fzf
+    htop
     # Use wl-copy and wl-paste to copy/paste in terminal in wayland.
     wl-clipboard
     restic
+    yt-dlp
+    distrobox
+    # Graphical applications
+    firefox
+    microsoft-edge
     signal-desktop
     zotero
+    rhythmbox
+    easyeffects
+    discord
+    # Fonts
+    iosevka
+    newcomputermodern
+    matlab
   ];
 
   # Enable home-manager
@@ -70,7 +80,12 @@
   dconf.settings = {
     # Pin applications to desktop bar.
     "org/gnome/shell" = {
-      favorite-apps = ["firefox.desktop" "org.wezfurlong.wezterm.desktop" "code.desktop"];
+      favorite-apps = [
+        "firefox.desktop"
+        "org.wezfurlong.wezterm.desktop"
+        "code.desktop"
+        "org.gnome.Nautilus.desktop"
+      ];
     };
     # Setup shortcuts for switching workspaces
     # and moving windows between workspaces.
@@ -116,7 +131,8 @@
     };
     # Swap control and caps lock.
     "org/gnome/desktop/input-sources" = {
-#       xkb-options = ["ctrl:swapcaps"];
+       # xkb-options = ["ctrl:swapcaps"];
+       xkb-options = ["ctrl:nocaps"];
     };
     # Setup browser shortcut.
     "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -153,19 +169,20 @@
     userEmail = "neelay.junnarkar@gmail.com";
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    extraConfig = ''
-      set rnu
-
-      set shiftwidth=2 smarttab
-      set expandtab
-      set tabstop=8 softtabstop=0
-    '';
-  };
+#  programs.neovim = {
+#     enable = true;
+#     defaultEditor = true;
+#     viAlias = true;
+#     vimAlias = true;
+#     extraConfig = ''
+#       set rnu
+#       set nu
+# 
+#       set shiftwidth=2 smarttab
+#       set expandtab
+#       set tabstop=8 softtabstop=0
+#     '';
+#   };
 
   programs.wezterm = {
     enable = true;
@@ -241,11 +258,11 @@
 
                 hide_frame_for_single_pane "true"
 
-                mode_normal  "#[fg=blue]●︎"
-                mode_tmux    "#[fg=#ffc387]●︎"
+                mode_normal  "#[fg=green]●︎"
+                mode_tmux    "#[fg=red]●︎"
   
-                tab_normal   "#[fg=#6C7086] {name} "
-                tab_active   "#[fg=#9399B2,bold,italic] {name} "
+                tab_normal   "#[fg=#bfbdb6] {index} "
+                tab_active   "#[fg=#e6e1cf,bold,italic] {index} "
               }
           }
       }
@@ -277,11 +294,28 @@
       yzhang.markdown-all-in-one
       tomoki1207.pdf
       bbenoist.nix
+      mechatroner.rainbow-csv
+      ms-python.python
+      charliermarsh.ruff
+      jock.svg
     ];
   };
 
-  # Unclear if this is doiing anything.
-  stylix.targets.firefox.enable = false;
+  stylix.enable = true;
+  stylix.targets = {
+    firefox.enable = false;
+    fish.enable = true;
+    fzf.enable = true;
+    gnome.enable = true;
+    gtk.enable = false;
+    vim.enable = true;
+    nixvim.enable = true;
+    nixvim.transparent_bg.main = true;
+    nixvim.transparent_bg.sign_column = true;
+    vscode.enable = true;
+    wezterm.enable = true;
+    zellij.enable = true;
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

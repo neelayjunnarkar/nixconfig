@@ -10,10 +10,30 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Stylix for theming.
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     # Status bar for zellij
-    zjstatus.url = "github:dj95/zjstatus";
+    zjstatus = {
+      url = "github:dj95/zjstatus";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Matlab
+    nix-matlab = {
+      url = "gitlab:doronbehar/nix-matlab"; 
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Neovim
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = {
@@ -22,6 +42,8 @@
     home-manager,
     stylix,
     zjstatus,
+    nix-matlab,
+    nixvim,
     ...
   } @ inputs: let
     inherit (self) outputs;
