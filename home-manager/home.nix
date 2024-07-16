@@ -6,7 +6,10 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  # Script to run programs on the nvidia gpu
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" (builtins.readFile ./scripts/nvidia-offload);
+in {
   # You can import other home-manager modules here
   imports = [
     ./modules
@@ -68,10 +71,12 @@
     discord
     matlab
     zoom-us
+    onlyoffice-bin_latest
+    libreoffice
     # Fonts
     iosevka
     newcomputermodern
-  ];
+  ]; 
 
   # Enable home-manager
   programs.home-manager.enable = true;
@@ -94,6 +99,7 @@
       zathura.enable = true;
     };
   };
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
