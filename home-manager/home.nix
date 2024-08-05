@@ -100,6 +100,17 @@ in {
     };
   };
 
+  xdg.desktopEntries.matlab = {
+    categories = ["Utility" "TextEditor" "Development" "IDE"];
+    icon = "matlab";
+    # keywords = ["science" "math" "matrix" "numerical" "computation" "plotting"];
+    mimeType = ["text/x-octave" "text/x-matlab"];
+    name = "Matlab";
+    type = "Application";
+    # version = "1.4";
+    exec = "nvidia-offload matlab -desktop %F";
+  };
+
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

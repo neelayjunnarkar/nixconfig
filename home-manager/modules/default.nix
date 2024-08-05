@@ -6,6 +6,7 @@
         ./fish.nix
         ./starship.nix
         ./git.nix
+        ./eza.nix
         ./nixvim.nix
         ./vscode.nix
     ];

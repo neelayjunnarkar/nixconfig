@@ -13,5 +13,8 @@
       charliermarsh.ruff
       jock.svg
     ];
+    userSettings = {
+      "editor.minimap.enabled" = false;
+    };
   };
 }
