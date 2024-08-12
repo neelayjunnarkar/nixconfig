@@ -71,8 +71,10 @@ in {
     discord
     matlab
     zoom-us
+    slack
     onlyoffice-bin_latest
     libreoffice
+    kicad
     # Fonts
     iosevka
     newcomputermodern

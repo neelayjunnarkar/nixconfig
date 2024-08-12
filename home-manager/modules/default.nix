@@ -7,6 +7,7 @@
         ./starship.nix
         ./git.nix
         ./eza.nix
+        ./zoxide.nix
         ./nixvim.nix
         ./vscode.nix
     ];
