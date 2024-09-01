@@ -56,6 +56,7 @@ in {
     cheat
     fzf
     htop
+    unzip
     # Use wl-copy and wl-paste to copy/paste in terminal in wayland.
     wl-clipboard
     restic
@@ -75,6 +76,9 @@ in {
     onlyoffice-bin_latest
     libreoffice
     kicad
+    prismlauncher
+    prusa-slicer
+    freecad
     # Fonts
     iosevka
     newcomputermodern

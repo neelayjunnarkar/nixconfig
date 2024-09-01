@@ -12,6 +12,7 @@
       ms-python.python
       charliermarsh.ruff
       jock.svg
+      rust-lang.rust-analyzer
     ];
     userSettings = {
       "editor.minimap.enabled" = false;
