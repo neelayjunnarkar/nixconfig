@@ -72,12 +72,12 @@
     # Keyboards
     "org/gnome/desktop/input-sources" = {
       sources =  [
-        (lib.hm.gvariant.mkTuple ["xkb" "us+colemak"])
-        (lib.hm.gvariant.mkTuple ["xkb" "in+marathi"])
         (lib.hm.gvariant.mkTuple ["xkb" "us"])
+        (lib.hm.gvariant.mkTuple ["xkb" "us+colemak_dh_ortho"])
+        (lib.hm.gvariant.mkTuple ["xkb" "in+marathi"])
       ];
       # TODO: What is mru-sources?
-      mru-sources = [(lib.hm.gvariant.mkTuple ["xkb" "us+colemak"])];
+      mru-sources = [(lib.hm.gvariant.mkTuple ["xkb" "us"])];
     };
     # Disable mouse acceleration
     "org/gnome/desktop/peripherals/mouse" = {

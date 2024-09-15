@@ -57,6 +57,7 @@ in {
     fzf
     htop
     unzip
+    texliveFull
     # Use wl-copy and wl-paste to copy/paste in terminal in wayland.
     wl-clipboard
     restic
@@ -79,6 +80,7 @@ in {
     prismlauncher
     prusa-slicer
     freecad
+    inkscape
     # Fonts
     iosevka
     newcomputermodern
