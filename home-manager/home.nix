@@ -57,6 +57,7 @@ in {
     fzf
     htop
     unzip
+    zip
     texliveFull
     # Use wl-copy and wl-paste to copy/paste in terminal in wayland.
     wl-clipboard
@@ -75,12 +76,12 @@ in {
     zoom-us
     slack
     onlyoffice-bin_latest
-    libreoffice
     kicad
     prismlauncher
     prusa-slicer
     freecad
     inkscape
+    syncthing
     # Fonts
     iosevka
     newcomputermodern
@@ -118,6 +119,7 @@ in {
     # version = "1.4";
     exec = "nvidia-offload matlab -desktop %F";
   };
+
 
 
   # Nicely reload system units when changing configs
