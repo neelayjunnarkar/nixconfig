@@ -82,6 +82,7 @@ in {
     freecad
     inkscape
     syncthing
+    ptyxis
     # Fonts
     iosevka
     newcomputermodern

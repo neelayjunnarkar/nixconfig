@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.vscode.fhs;
     extensions = with pkgs.vscode-extensions; [
-      mgt19937.typst-preview
+      myriad-dreamin.tinymist
       nvarner.typst-lsp
       yzhang.markdown-all-in-one
       tomoki1207.pdf
