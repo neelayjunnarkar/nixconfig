@@ -27,18 +27,8 @@
       config.window_background_opacity = 0.9
       config.window_decorations = "RESIZE"
 
-      config.xcursor_size = nil
-      config.xcursor_theme = nil
-
-      local success, stdout, stderr = wezterm.run_child_process({"gsettings", "get", "org.gnome.desktop.interface", "cursor-theme"})
-      if success then
-        config.xcursor_theme = stdout:gsub("'(.+)'\n", "%1")
-      end
-
-      local success, stdout, stderr = wezterm.run_child_process({"gsettings", "get", "org.gnome.desktop.interface", "cursor-size"})
-      if success then
-        config.xcursor_size = tonumber(stdout)
-      end
+      -- Added 2024-12-04 to fix a rendering bu
+      config.front_end = "WebGpu"
 
       return config
     '';

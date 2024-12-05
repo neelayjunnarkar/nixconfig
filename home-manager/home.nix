@@ -23,7 +23,7 @@ in {
       (final: prev: {
         zjstatus = inputs.zjstatus.packages.${prev.system}.default;
       })
-      inputs.nix-matlab.overlay  
+      inputs.nix-matlab.overlay
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -79,14 +79,13 @@ in {
     kicad
     prismlauncher
     prusa-slicer
-    freecad
+    freecad-wayland
     inkscape
     syncthing
-    ptyxis
     # Fonts
     iosevka
     newcomputermodern
-  ]; 
+  ];
 
   # Enable home-manager
   programs.home-manager.enable = true;
@@ -106,7 +105,6 @@ in {
       vscode.enable = true;
       wezterm.enable = true;
       zellij.enable = true;
-      zathura.enable = true;
     };
   };
 
@@ -121,11 +119,9 @@ in {
     exec = "nvidia-offload matlab -desktop %F";
   };
 
-
-
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
 }

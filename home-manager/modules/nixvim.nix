@@ -28,14 +28,14 @@
         enable = true;
         servers = {
           ruff.enable = true; # Python
-          typst-lsp.enable = true; # Typst
+          typst_lsp.enable = true; # Typst
           nixd.enable = true; # Nix
         };
       };
 
       treesitter = {
         enable = true;
-        indent = true;
+        settings.indent.enable = true;
       };
 
       cmp.enable = true;

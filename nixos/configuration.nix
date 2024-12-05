@@ -20,7 +20,7 @@
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
 
-    # Homemanager as a module 
+    # Homemanager as a module
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -112,7 +112,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -132,10 +131,9 @@
   services.libinput.enable = true;
 
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -148,7 +146,7 @@
 
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
     # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead 
+    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
     powerManagement.enable = false;
 
@@ -158,9 +156,9 @@
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
     open = false;
@@ -221,25 +219,25 @@
     autoEnable = false;
     polarity = "dark";
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
-    base16Scheme = {
-      base00 = "0F1419";
-      base01 = "131721";
-      base02 = "272D38"; # This one is causing contrast issues.
-      base03 = "3E4B59";
-      base04 = "BFBDB6";
-      base05 = "E6E1CF";
-      base06 = "E6E1CF";
-      base07 = "F3F4F5";
-      base08 = "F07178";
-      base09 = "FF8F40";
-      base0A = "FFB454";
-      base0B = "B8CC52";
-      base0C = "95E6CB";
-      base0D = "59C2FF";
-      base0E = "D2A6FF";
-      base0F = "E6B673";
-    };
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
+    # base16Scheme = {
+    #   base00 = "0F1419";
+    #   base01 = "131721";
+    #   base02 = "272D38"; # This one is causing contrast issues.
+    #   base03 = "3E4B59";
+    #   base04 = "BFBDB6";
+    #   base05 = "E6E1CF";
+    #   base06 = "E6E1CF";
+    #   base07 = "F3F4F5";
+    #   base08 = "F07178";
+    #   base09 = "FF8F40";
+    #   base0A = "FFB454";
+    #   base0B = "B8CC52";
+    #   base0C = "95E6CB";
+    #   base0D = "59C2FF";
+    #   base0E = "D2A6FF";
+    #   base0F = "E6B673";
+    # };
     image = ./../background-pics/Earth2k.jpg;
     fonts.monospace = {
       package = pkgs.cascadia-code;
@@ -247,10 +245,10 @@
     };
     # Including this due to some Stylix cursor bug.
     # Perhaps try removing it in the future.
-    cursor = {
-      package = pkgs.gnome.adwaita-icon-theme;
-      name = "Adwaita";
-    };
+    # cursor = {
+    #   package = pkgs.adwaita-icon-theme;
+    #   name = "Adwaita";
+    # };
   };
 
   programs.steam = {
@@ -260,5 +258,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

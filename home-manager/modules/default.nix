@@ -10,5 +10,6 @@
         ./zoxide.nix
         ./nixvim.nix
         ./vscode.nix
+        ./zeditor.nix
     ];
 }

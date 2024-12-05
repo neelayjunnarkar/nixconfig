@@ -5,6 +5,7 @@
       favorite-apps = [
         "firefox.desktop"
         "org.wezfurlong.wezterm.desktop"
+        "dev.zed.Zed.desktop"
         "code.desktop"
         "org.gnome.Nautilus.desktop"
       ];
