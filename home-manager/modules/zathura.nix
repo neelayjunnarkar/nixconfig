@@ -1,8 +1,8 @@
 {
-    programs.zathura = {
-        enable = true;
-        options = {
-            guioptions = "none";
-        };
+  programs.zathura = {
+    enable = true;
+    options = {
+      guioptions = "none";
     };
+  };
 }

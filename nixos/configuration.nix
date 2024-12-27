@@ -25,7 +25,7 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = {inherit inputs outputs;};
     users = {
       # Import your home-manager configuration
       neelay = import ../home-manager/home.nix;
@@ -72,7 +72,6 @@
   };
 
   # FIXME: Add the rest of your current configuration
-
 
   # boot.kernelPackages = pkgs.linuxPackages_6_10;
   boot.loader.systemd-boot.enable = true;
@@ -140,7 +139,6 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
-
     # Modesetting is required.
     modesetting.enable = true;
 
@@ -164,7 +162,7 @@
     open = false;
 
     # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.

@@ -48,51 +48,54 @@ in {
     homeDirectory = "/home/neelay";
   };
 
-  home.packages = with pkgs; [
-    ripgrep
-    fd
-    tealdeer
-    tree
-    cheat
-    fzf
-    htop
-    unzip
-    zip
-    texliveFull
-    # Use wl-copy and wl-paste to copy/paste in terminal in wayland.
-    wl-clipboard
-    restic
-    yt-dlp
-    distrobox
-    nil # Nix language server, supposedly better than nixd
-    tinymist # Typst language server and more
-    typst
-    # Graphical applications
-    firefox
-    microsoft-edge
-    signal-desktop
-    zotero
-    rhythmbox
-    easyeffects
-    discord
-    matlab
-    zoom-us
-    slack
-    onlyoffice-bin_latest
-    kicad
-    prismlauncher
-    prusa-slicer
-    freecad-wayland
-    inkscape
-    syncthing
-    # Fonts
-    iosevka
-    newcomputermodern
-  ] ++ [
-    # Use the home manager module when available.
-    # Also set the configuration and change the gnome module.
-    inputs.ghostty.packages.x86_64-linux.default
-  ];
+  home.packages = with pkgs;
+    [
+      ripgrep
+      fd
+      tealdeer
+      tree
+      cheat
+      fzf
+      htop
+      unzip
+      zip
+      texliveFull
+      # Use wl-copy and wl-paste to copy/paste in terminal in wayland.
+      wl-clipboard
+      restic
+      yt-dlp
+      distrobox
+      nil # Nix language server, supposedly better than nixd
+      alejandra # Nix formatter
+      tinymist # Typst language server and more
+      typst
+      # Graphical applications
+      firefox
+      microsoft-edge
+      signal-desktop
+      zotero
+      rhythmbox
+      easyeffects
+      discord
+      matlab
+      zoom-us
+      slack
+      onlyoffice-bin_latest
+      kicad
+      prismlauncher
+      prusa-slicer
+      freecad-wayland
+      inkscape
+      syncthing
+      # Fonts
+      iosevka
+      newcomputermodern
+    ]
+    ++ [
+      # TODO: Use the home manager module when available.
+      # Also set the configuration and change the gnome module.
+      inputs.ghostty.packages.x86_64-linux.default
+    ];
 
   # Enable home-manager
   programs.home-manager.enable = true;

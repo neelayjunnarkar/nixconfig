@@ -54,8 +54,8 @@
     };
     # Swap control and caps lock.
     "org/gnome/desktop/input-sources" = {
-       # xkb-options = ["ctrl:swapcaps"];
-       xkb-options = ["ctrl:nocaps"];
+      # xkb-options = ["ctrl:swapcaps"];
+      xkb-options = ["ctrl:nocaps"];
     };
     # Setup browser shortcut.
     "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -73,7 +73,7 @@
     };
     # Keyboards
     "org/gnome/desktop/input-sources" = {
-      sources =  [
+      sources = [
         (lib.hm.gvariant.mkTuple ["xkb" "us"])
         (lib.hm.gvariant.mkTuple ["xkb" "us+colemak_dh_ortho"])
         (lib.hm.gvariant.mkTuple ["xkb" "in+marathi"])
@@ -83,7 +83,7 @@
     };
     # Disable mouse acceleration
     "org/gnome/desktop/peripherals/mouse" = {
-        accel-profile = "flat";
+      accel-profile = "flat";
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       speed = 0.6;
