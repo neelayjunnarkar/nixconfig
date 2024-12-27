@@ -64,6 +64,9 @@ in {
     restic
     yt-dlp
     distrobox
+    nil # Nix language server, supposedly better than nixd
+    tinymist # Typst language server and more
+    typst
     # Graphical applications
     firefox
     microsoft-edge
@@ -85,28 +88,14 @@ in {
     # Fonts
     iosevka
     newcomputermodern
+  ] ++ [
+    # Use the home manager module when available.
+    # Also set the configuration and change the gnome module.
+    inputs.ghostty.packages.x86_64-linux.default
   ];
 
   # Enable home-manager
   programs.home-manager.enable = true;
-
-  stylix = {
-    enable = true;
-    targets = {
-      firefox.enable = false;
-      fish.enable = true;
-      fzf.enable = true;
-      gnome.enable = true;
-      gtk.enable = false;
-      vim.enable = true;
-      nixvim.enable = true;
-      nixvim.transparent_bg.main = true;
-      nixvim.transparent_bg.sign_column = true;
-      vscode.enable = true;
-      wezterm.enable = true;
-      zellij.enable = true;
-    };
-  };
 
   xdg.desktopEntries.matlab = {
     categories = ["Utility" "TextEditor" "Development" "IDE"];
@@ -123,5 +112,5 @@ in {
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "24.11";
+  home.stateVersion = "24.05";
 }

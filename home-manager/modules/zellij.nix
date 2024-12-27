@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true;
+    # enableFishIntegration = true;
     settings = {
       ui.pane_frames = {
         hide_session_name = true;
@@ -30,7 +30,7 @@
 
                 mode_normal  "#[fg=green]●︎"
                 mode_tmux    "#[fg=red]●︎"
-  
+
                 tab_normal   "#[fg=#bfbdb6] {index} "
                 tab_active   "#[fg=#e6e1cf,bold,italic] {index} "
               }

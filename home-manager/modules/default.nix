@@ -1,5 +1,6 @@
 {...}: {
     imports = [
+        ./stylix.nix
         ./gnome.nix
         ./wezterm.nix
         ./zellij.nix
@@ -11,5 +12,6 @@
         ./nixvim.nix
         ./vscode.nix
         ./zeditor.nix
+        ./zathura.nix
     ];
 }

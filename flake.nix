@@ -36,6 +36,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    # Ghostty terminal emulator.
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
   };
 
   outputs = {
