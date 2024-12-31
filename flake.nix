@@ -40,6 +40,14 @@
     # Ghostty terminal emulator.
     ghostty = {
       url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs_unstable";
+    };
+
+    # Insanity voice chat.
+    insanity = {
+      url = "github:nicolaschan/insanity/v1.5.3";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

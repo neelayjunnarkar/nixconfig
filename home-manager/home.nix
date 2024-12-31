@@ -94,7 +94,8 @@ in {
     ++ [
       # TODO: Use the home manager module when available.
       # Also set the configuration and change the gnome module.
-      inputs.ghostty.packages.x86_64-linux.default
+      inputs.ghostty.packages.${system}.default
+      inputs.insanity.packages.${system}.default
     ];
 
   # Enable home-manager
