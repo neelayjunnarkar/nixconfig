@@ -15,6 +15,9 @@
       wezterm.enable = true;
       zellij.enable = true;
       zathura.enable = true;
+      # TODO: enable the following when I have access to them.
+      # ghostty.enable = true;
+      # zeditor.enable = true;
     };
   };
 }

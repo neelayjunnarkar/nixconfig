@@ -69,6 +69,8 @@ in {
       alejandra # Nix formatter
       tinymist # Typst language server and more
       typst
+      rust-analyzer
+      (python3.withPackages (ps: [ps.numpy]))
       # Graphical applications
       firefox
       microsoft-edge
@@ -92,9 +94,6 @@ in {
       newcomputermodern
     ]
     ++ [
-      # TODO: Use the home manager module when available.
-      # Also set the configuration and change the gnome module.
-      inputs.ghostty.packages.${system}.default
       inputs.insanity.packages.${system}.default
     ];
 

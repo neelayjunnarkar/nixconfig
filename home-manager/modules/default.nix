@@ -3,6 +3,7 @@
     ./stylix.nix
     ./gnome.nix
     ./wezterm.nix
+    ./ghostty.nix
     ./zellij.nix
     ./fish.nix
     ./starship.nix
@@ -13,5 +14,6 @@
     ./vscode.nix
     ./zeditor.nix
     ./zathura.nix
+    ./syncthing.nix
   ];
 }

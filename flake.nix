@@ -37,16 +37,9 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    # Ghostty terminal emulator.
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-      inputs.nixpkgs-unstable.follows = "nixpkgs_unstable";
-    };
-
     # Insanity voice chat.
     insanity = {
-      url = "github:nicolaschan/insanity/v1.5.3";
+      url = "github:nicolaschan/insanity?tag=v1.5.6";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

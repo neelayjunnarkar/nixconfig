@@ -67,8 +67,7 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal" = {
       binding = "<Super>Return";
-      # command = "wezterm start --always-new-process zellij";
-      command = "ghostty --background-opacity=0.95 --window-decoration=false --window-height=1000 --window-width=1000 --theme=ayu";
+      command = "ghostty";
       name = "Terminal";
     };
     # Keyboards
