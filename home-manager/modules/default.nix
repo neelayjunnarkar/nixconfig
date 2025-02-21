@@ -2,9 +2,9 @@
   imports = [
     ./stylix.nix
     ./gnome.nix
-    ./wezterm.nix
+    # ./wezterm.nix
     ./ghostty.nix
-    ./zellij.nix
+    # ./zellij.nix
     ./fish.nix
     ./starship.nix
     ./git.nix

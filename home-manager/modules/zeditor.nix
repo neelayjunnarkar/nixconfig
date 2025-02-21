@@ -4,7 +4,7 @@
     # package = pkgs.zed-editor.fhs;
     extensions = ["typst" "nix" "rainbow-csv"];
     # TODO: use this when it becomes an option
-    # extraPackages = with pkgs; [ alejandra nil tinymist ]; # Rn doesn't have the option
+    # extraPackages = with pkgs; [alejandra nil tinymist]; # Rn doesn't have the option
     userSettings = {
       auto_update = false;
       theme.light = "Ayu Light";
@@ -28,6 +28,12 @@
         "Nix" = {
           language_servers = ["nil" "!nixd"];
           format_on_save.external.command = "alejandra";
+        };
+        "Typst" = {
+          soft_wrap = "editor_width";
+        };
+        "Markdown" = {
+          soft_wrap = "editor_width";
         };
       };
     };

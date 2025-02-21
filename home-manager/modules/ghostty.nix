@@ -4,11 +4,10 @@
     enableFishIntegration = true;
     settings = {
       background-opacity = 0.95;
-      window-decoration = false;
+      window-decoration = "none";
       window-height = 1000;
       window-width = 1000;
-      # Todo: set theme via stylix when option becomes available;
-      theme = "ayu";
+      # Theme set via stylix
     };
   };
 }

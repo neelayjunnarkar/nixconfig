@@ -5,7 +5,7 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
 
-    nixpkgs_unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
@@ -18,11 +18,12 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    # Status bar for zellij
-    zjstatus = {
-      url = "github:dj95/zjstatus";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # # Status bar for zellij
+    # zjstatus = {
+    #   url = "github:dj95/zjstatus";
+    #   # Package takes too long to build..
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Matlab
     nix-matlab = {
@@ -40,7 +41,8 @@
     # Insanity voice chat.
     insanity = {
       url = "github:nicolaschan/insanity?tag=v1.5.6";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # Package takes too long to build..
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -49,7 +51,6 @@
     nixpkgs,
     home-manager,
     stylix,
-    zjstatus,
     nix-matlab,
     nixvim,
     ...

@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.zellij = {
-    enable = true;
+    enable = false;
     # enableFishIntegration = true;
     settings = {
       ui.pane_frames = {

@@ -20,9 +20,9 @@ in {
   nixpkgs = {
     # You can add overlays here
     overlays = [
-      (final: prev: {
-        zjstatus = inputs.zjstatus.packages.${prev.system}.default;
-      })
+      # (final: prev: {
+      #   zjstatus = inputs.zjstatus.packages.${prev.system}.default;
+      # })
       inputs.nix-matlab.overlay
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
@@ -69,6 +69,8 @@ in {
       alejandra # Nix formatter
       tinymist # Typst language server and more
       typst
+      polylux2pdfpc # polylux notes generator for pdfpc
+      pdfpc # pdf presentation software
       rust-analyzer
       (python3.withPackages (ps: [ps.numpy]))
       # Graphical applications
@@ -108,7 +110,7 @@ in {
     name = "Matlab";
     type = "Application";
     # version = "1.4";
-    exec = "nvidia-offload matlab -desktop %F";
+    exec = "nvidia-offload matlab -desktop -nosoftwareopengl %F";
   };
 
   # Nicely reload system units when changing configs
