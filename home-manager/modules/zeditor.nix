@@ -2,7 +2,7 @@
   programs.zed-editor = {
     enable = true;
     # package = pkgs.zed-editor.fhs;
-    extensions = ["typst" "nix" "rainbow-csv"];
+    extensions = ["typst" "nix" "rainbow-csv" "csharp"];
     # TODO: use this when it becomes an option
     # extraPackages = with pkgs; [alejandra nil tinymist]; # Rn doesn't have the option
     userSettings = {

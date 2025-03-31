@@ -91,6 +91,8 @@ in {
       freecad-wayland
       inkscape
       syncthing
+      unityhub # for asset-guarding engagements project
+      vlc
       # Fonts
       iosevka
       newcomputermodern

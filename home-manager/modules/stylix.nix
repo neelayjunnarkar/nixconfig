@@ -1,6 +1,7 @@
 {
   stylix = {
     enable = true;
+    opacity.terminal = 0.9;
     targets = {
       firefox.enable = false;
       fish.enable = true;

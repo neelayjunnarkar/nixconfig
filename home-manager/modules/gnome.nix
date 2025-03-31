@@ -82,6 +82,7 @@
     # Disable mouse acceleration
     "org/gnome/desktop/peripherals/mouse" = {
       accel-profile = "flat";
+      speed = 0.0;
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       speed = 0.6;
