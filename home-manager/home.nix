@@ -60,6 +60,7 @@ in {
       unzip
       zip
       texliveFull
+      pciutils
       # Use wl-copy and wl-paste to copy/paste in terminal in wayland.
       wl-clipboard
       restic
@@ -93,6 +94,7 @@ in {
       syncthing
       unityhub # for asset-guarding engagements project
       vlc
+      bottles
       # Fonts
       iosevka
       newcomputermodern
