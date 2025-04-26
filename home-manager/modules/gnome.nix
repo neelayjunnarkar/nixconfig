@@ -5,7 +5,7 @@
       favorite-apps = [
         "firefox.desktop"
         "dev.zed.Zed.desktop"
-        "code.desktop"
+        "com.mitchellh.ghostty.desktop"
         "org.gnome.Nautilus.desktop"
       ];
     };
@@ -41,7 +41,7 @@
       switch-applications = [];
       switch-applications-backward = [];
       # Screenshot
-      show-screenshot-ui = ["<Shift><Super>s"];
+      # show-screenshot-ui = ["<Shift><Super>s"];
     };
     # Number of workspaces
     "org/gnome/desktop/wm/preferences" = {
@@ -56,6 +56,8 @@
       # xkb-options = ["ctrl:swapcaps"];
       xkb-options = ["ctrl:nocaps"];
     };
+    # Setup screenshot shortcut.
+    # "org/gnome/shell/keybindings/show-screenshot-ui" = ["<Shift><Super>s"];
     # Setup browser shortcut.
     "org/gnome/settings-daemon/plugins/media-keys" = {
       www = ["<Shift><Super>Return"];

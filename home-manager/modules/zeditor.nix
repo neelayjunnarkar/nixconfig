@@ -23,6 +23,7 @@
           };
           binary.path_lookup = true;
         };
+        omnisharp.binary.path_lookup = true;
       };
       languages = {
         "Nix" = {

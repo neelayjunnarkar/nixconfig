@@ -24,9 +24,6 @@ in {
       #   zjstatus = inputs.zjstatus.packages.${prev.system}.default;
       # })
       inputs.nix-matlab.overlay
-      # If you want to use overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -60,6 +57,7 @@ in {
       unzip
       zip
       texliveFull
+      pciutils
       # Use wl-copy and wl-paste to copy/paste in terminal in wayland.
       wl-clipboard
       restic
@@ -67,12 +65,14 @@ in {
       distrobox
       nil # Nix language server, supposedly better than nixd
       alejandra # Nix formatter
+      rust-analyzer
+      omnisharp-roslyn # C#
       tinymist # Typst language server and more
       typst
       polylux2pdfpc # polylux notes generator for pdfpc
       pdfpc # pdf presentation software
-      rust-analyzer
       (python3.withPackages (ps: [ps.numpy]))
+      nvidia-container-toolkit
       # Graphical applications
       firefox
       microsoft-edge
@@ -85,14 +85,15 @@ in {
       zoom-us
       slack
       onlyoffice-bin_latest
-      kicad
+      # kicad
       prismlauncher
-      prusa-slicer
+      # prusa-slicer
       freecad-wayland
       inkscape
       syncthing
       unityhub # for asset-guarding engagements project
       vlc
+      bottles
       # Fonts
       iosevka
       newcomputermodern

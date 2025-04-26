@@ -26,10 +26,11 @@
     # };
 
     # Matlab
-    nix-matlab = {
-      url = "gitlab:doronbehar/nix-matlab";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # TODO: re-enable.
+    # nix-matlab = {
+    #   url = "gitlab:doronbehar/nix-matlab";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Neovim
     nixvim = {

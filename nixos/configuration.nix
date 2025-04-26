@@ -73,7 +73,7 @@
 
   # FIXME: Add the rest of your current configuration
 
-  boot.kernelPackages = pkgs.linuxPackages_6_12; # linuxPackages, linuxPackages_latest
+  boot.kernelPackages = pkgs.linuxPackages; # linuxPackages, linuxPackages_latest
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -138,6 +138,7 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
 
+  hardware.nvidia-container-toolkit.enable = true;
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
