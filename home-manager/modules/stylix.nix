@@ -17,6 +17,7 @@
       zellij.enable = true;
       zathura.enable = true;
       ghostty.enable = true;
+      btop.enable = true;
       # TODO: enable the following when I have access to them.
       # zeditor.enable = true;
     };

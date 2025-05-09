@@ -1,7 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  pkgs-unstable,
+  ...
+}: {
   programs.zed-editor = {
     enable = true;
     # package = pkgs.zed-editor.fhs;
+    package = pkgs-unstable.zed-editor;
     extensions = ["typst" "nix" "rainbow-csv" "csharp"];
     # TODO: use this when it becomes an option
     # extraPackages = with pkgs; [alejandra nil tinymist]; # Rn doesn't have the option
@@ -35,6 +40,15 @@
         };
         "Markdown" = {
           soft_wrap = "editor_width";
+        };
+      };
+
+      assistant = {
+        version = "2";
+        enabled = true;
+        default_model = {
+          provider = "google";
+          model = "gemini-2.0-flash";
         };
       };
     };

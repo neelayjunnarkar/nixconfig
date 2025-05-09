@@ -6,6 +6,7 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   # You can import other NixOS modules here
@@ -25,7 +26,10 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = {inherit inputs outputs;};
+    extraSpecialArgs = {
+      inherit inputs outputs;
+      inherit pkgs-unstable;
+    };
     users = {
       # Import your home-manager configuration
       neelay = import ../home-manager/home.nix;
@@ -73,7 +77,7 @@
 
   # FIXME: Add the rest of your current configuration
 
-  boot.kernelPackages = pkgs.linuxPackages; # linuxPackages, linuxPackages_latest
+  boot.kernelPackages = pkgs.linuxPackages_6_12; # linuxPackages, linuxPackages_latest
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 

@@ -10,6 +10,7 @@
     ./git.nix
     ./eza.nix
     ./zoxide.nix
+    ./btop.nix
     ./nixvim.nix
     ./vscode.nix
     ./zeditor.nix

@@ -26,11 +26,11 @@
     # };
 
     # Matlab
-    # TODO: re-enable.
-    # nix-matlab = {
-    #   url = "gitlab:doronbehar/nix-matlab";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nix-matlab = {
+      url = "gitlab:doronbehar/nix-matlab";
+      # TODO: try switching back to nixpkgs in 25.05
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
     # Neovim
     nixvim = {
@@ -50,36 +50,27 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
-    stylix,
-    nix-matlab,
-    nixvim,
     ...
   } @ inputs: let
     inherit (self) outputs;
+    pkgs-unstable = nixpkgs-unstable.legacyPackages.${"x86_64-linux"};
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       waffle = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {
+          inherit inputs outputs;
+          inherit pkgs-unstable;
+        };
         # > Our main nixos configuration file <
         modules = [
-          stylix.nixosModules.stylix
+          inputs.stylix.nixosModules.stylix
           ./nixos/configuration.nix
         ];
       };
     };
-
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    # homeConfigurations = {
-    #   "neelay@waffle" = home-manager.lib.homeManagerConfiguration {
-    #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-    #     extraSpecialArgs = {inherit inputs outputs;};
-    #     # > Our main home-manager configuration file <
-    #     modules = [./home-manager/home.nix];
-    #   };
-    # };
   };
 }
