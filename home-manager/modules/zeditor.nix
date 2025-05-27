@@ -7,7 +7,7 @@
     enable = true;
     # package = pkgs.zed-editor.fhs;
     package = pkgs-unstable.zed-editor;
-    extensions = ["typst" "nix" "rainbow-csv" "csharp"];
+    extensions = ["typst" "nix" "rainbow-csv" "csharp" "matlab"];
     # TODO: use this when it becomes an option
     # extraPackages = with pkgs; [alejandra nil tinymist]; # Rn doesn't have the option
     userSettings = {

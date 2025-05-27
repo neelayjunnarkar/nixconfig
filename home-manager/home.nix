@@ -113,7 +113,7 @@ in {
     name = "Matlab";
     type = "Application";
     # version = "1.4";
-    exec = "nvidia-offload matlab -desktop -nosoftwareopengl -Dsun.java2d.pmoffscreen=false %F";
+    exec = "nvidia-offload matlab -desktop -nosoftwareopengl %F";
   };
 
   # Nicely reload system units when changing configs
