@@ -9,16 +9,15 @@
     package = pkgs-unstable.zed-editor;
     extensions = ["typst" "nix" "rainbow-csv" "csharp" "matlab"];
     # TODO: use this when it becomes an option
-    # extraPackages = with pkgs; [alejandra nil tinymist]; # Rn doesn't have the option
+    extraPackages = with pkgs; [alejandra nil tinymist rust-analyzer omnisharp-roslyn]; # Rn doesn't have the option
     userSettings = {
       auto_update = false;
-      theme.light = "Ayu Light";
-      theme.dark = "Ayu Dark";
+      # theme set with Stylix
       lsp = {
-        # rust-analyzer = {
-        # binary.path_lookup = true;
-        # initialization_options.cargo.features = "all";
-        # };
+        rust-analyzer = {
+          binary.path_lookup = true;
+          initialization_options.cargo.features = "all";
+        };
         nix.binary.path_lookup = true;
         nil.binary.path_lookup = true;
         tinymist = {

@@ -1,10 +1,8 @@
-{...}: {
+{
   imports = [
     ./stylix.nix
     ./gnome.nix
-    # ./wezterm.nix
     ./ghostty.nix
-    # ./zellij.nix
     ./fish.nix
     ./starship.nix
     ./git.nix
@@ -12,7 +10,6 @@
     ./zoxide.nix
     ./btop.nix
     ./nixvim.nix
-    ./vscode.nix
     ./zeditor.nix
     ./zathura.nix
     ./syncthing.nix

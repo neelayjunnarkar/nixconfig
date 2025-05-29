@@ -20,9 +20,6 @@ in {
   nixpkgs = {
     # You can add overlays here
     overlays = [
-      # (final: prev: {
-      #   zjstatus = inputs.zjstatus.packages.${prev.system}.default;
-      # })
       inputs.nix-matlab.overlay
       # Or define it inline, for example:
       # (final: prev: {
@@ -63,11 +60,6 @@ in {
       restic
       yt-dlp
       distrobox
-      nil # Nix language server, supposedly better than nixd
-      alejandra # Nix formatter
-      rust-analyzer
-      omnisharp-roslyn # C#
-      tinymist # Typst language server and more
       typst
       polylux2pdfpc # polylux notes generator for pdfpc
       pdfpc # pdf presentation software
@@ -75,7 +67,7 @@ in {
       nvidia-container-toolkit
       # Graphical applications
       firefox
-      microsoft-edge
+      chromium
       signal-desktop
       zotero
       rhythmbox

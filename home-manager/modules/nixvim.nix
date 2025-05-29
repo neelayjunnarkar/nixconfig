@@ -28,8 +28,9 @@
         enable = true;
         servers = {
           ruff.enable = true; # Python
-          typst_lsp.enable = true; # Typst
+          tinymist.enable = true; # Typst
           nixd.enable = true; # Nix
+          # rust_analyzer.enable = true; # Rust
         };
       };
 

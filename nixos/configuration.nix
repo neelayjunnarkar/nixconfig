@@ -39,15 +39,6 @@
   nixpkgs = {
     # You can add overlays here
     overlays = [
-      # If you want to use overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -77,7 +68,7 @@
 
   # FIXME: Add the rest of your current configuration
 
-  boot.kernelPackages = pkgs.linuxPackages_6_12; # linuxPackages, linuxPackages_latest
+  boot.kernelPackages = pkgs.linuxPackages; # linuxPackages, linuxPackages_latest, linuxPackages_6_12
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -115,7 +106,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -163,14 +153,14 @@
     # supported GPUs is at:
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
-    open = false;
+    open = true;
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.production; # production, latest (stable = latest)
+    package = config.boot.kernelPackages.nvidiaPackages.production; # production, latest
 
     prime = {
       offload = {
@@ -181,8 +171,6 @@
       nvidiaBusId = "PCI:1:0:0";
     };
   };
-
-  programs.fish.enable = true;
 
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
@@ -211,47 +199,7 @@
     };
   };
 
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  # environment.systemPackages = with pkgs; [
-  #   base16-schemes
-  # ];
-
-  stylix = {
-    enable = true;
-    autoEnable = false;
-    polarity = "dark";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
-    # base16Scheme = {
-    #   base00 = "0F1419";
-    #   base01 = "131721";
-    #   base02 = "272D38"; # This one is causing contrast issues.
-    #   base03 = "3E4B59";
-    #   base04 = "BFBDB6";
-    #   base05 = "E6E1CF";
-    #   base06 = "E6E1CF";
-    #   base07 = "F3F4F5";
-    #   base08 = "F07178";
-    #   base09 = "FF8F40";
-    #   base0A = "FFB454";
-    #   base0B = "B8CC52";
-    #   base0C = "95E6CB";
-    #   base0D = "59C2FF";
-    #   base0E = "D2A6FF";
-    #   base0F = "E6B673";
-    # };
-    image = ./../background-pics/Earth2k.jpg;
-    fonts.monospace = {
-      package = pkgs.cascadia-code;
-      name = "Cascadia Code NF";
-    };
-    # Including this due to some Stylix cursor bug.
-    # Perhaps try removing it in the future.
-    # cursor = {
-    #   package = pkgs.adwaita-icon-theme;
-    #   name = "Adwaita";
-    # };
-  };
+  programs.fish.enable = true;
 
   programs.steam = {
     enable = true;

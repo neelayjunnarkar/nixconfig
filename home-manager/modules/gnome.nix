@@ -50,6 +50,7 @@
     # Enable drag windows to side/top to semi-/maximize.
     "org/gnome/mutter" = {
       edge-tiling = true;
+      dynamic-workspaces = false;
     };
     # Swap control and caps lock.
     "org/gnome/desktop/input-sources" = {
