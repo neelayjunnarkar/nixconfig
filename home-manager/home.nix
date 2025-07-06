@@ -5,6 +5,7 @@
   lib,
   config,
   pkgs,
+  pkgs-unstable,
   ...
 }: let
   # Script to run programs on the nvidia gpu
@@ -15,6 +16,7 @@ in {
     ./modules
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
+    inputs.stylix.homeModules.stylix
   ];
 
   nixpkgs = {
@@ -42,10 +44,10 @@ in {
     homeDirectory = "/home/neelay";
   };
 
-  home.packages = with pkgs;
-    [
+  home.packages =
+    (with pkgs; [
       ripgrep
-      fd
+      fd # find replacement
       tealdeer
       tree
       cheat
@@ -55,6 +57,8 @@ in {
       zip
       texliveFull
       pciutils
+      dust # du replacement
+      duf # df repacement
       # Use wl-copy and wl-paste to copy/paste in terminal in wayland.
       wl-clipboard
       restic
@@ -79,7 +83,7 @@ in {
       onlyoffice-bin_latest
       # kicad
       prismlauncher
-      # prusa-slicer
+      orca-slicer
       freecad-wayland
       inkscape
       syncthing
@@ -89,9 +93,12 @@ in {
       # Fonts
       iosevka
       newcomputermodern
-    ]
+    ])
+    ++ (with pkgs-unstable; [
+      grayjay
+    ])
     ++ [
-      inputs.insanity.packages.${system}.default
+      inputs.insanity.packages.${pkgs.system}.default
     ];
 
   # Enable home-manager

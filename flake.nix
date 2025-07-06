@@ -4,7 +4,6 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
@@ -13,7 +12,7 @@
 
     # Stylix for theming.
     stylix = {
-      url = "github:danth/stylix/release-25.05";
+      url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
@@ -21,7 +20,6 @@
     # Matlab
     nix-matlab = {
       url = "gitlab:doronbehar/nix-matlab";
-      # TODO: try switching from nixpkgs-unstable back to nixpkgs in 25.05
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -47,7 +45,11 @@
     ...
   } @ inputs: let
     inherit (self) outputs;
-    pkgs-unstable = nixpkgs-unstable.legacyPackages.${"x86_64-linux"};
+    system = "x86_64-linux";
+    pkgs-unstable = import nixpkgs-unstable {
+      inherit system;
+      config.allowUnfree = true;
+    };
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -59,7 +61,6 @@
         };
         # > Our main nixos configuration file <
         modules = [
-          inputs.stylix.nixosModules.stylix
           ./nixos/configuration.nix
         ];
       };
