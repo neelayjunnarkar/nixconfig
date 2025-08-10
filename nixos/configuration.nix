@@ -75,6 +75,10 @@
   # TODO: Set your hostname
   networking.hostName = "waffle";
   networking.networkmanager.enable = true;
+  # networking.networkmanager.insertNameservers = [
+  #   "8.8.8.8"
+  #   "1.1.1.1"
+  # ];
 
   time.timeZone = "America/Los_Angeles";
 
@@ -127,10 +131,16 @@
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [
+    "modesetting"
+    "nvidia"
+  ];
 
   hardware.nvidia-container-toolkit.enable = true;
   hardware.nvidia = {
@@ -141,11 +151,11 @@
     # Enable this if you have graphical corruption issues or application crashes after waking
     # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
-    powerManagement.enable = false;
+    powerManagement.enable = true;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
+    powerManagement.finegrained = true;
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
@@ -153,14 +163,14 @@
     # supported GPUs is at:
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
-    open = false;
+    open = true;
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.beta; # production, latest, beta
+    package = config.boot.kernelPackages.nvidiaPackages.latest; # production, latest, beta
 
     prime = {
       offload = {

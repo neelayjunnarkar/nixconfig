@@ -21,7 +21,7 @@
         nix.binary.path_lookup = true;
         nil.binary.path_lookup = true;
         tinymist = {
-          initialization_options = {
+          settings = {
             exportPdf = "onType";
             outputPath = "$root/$dir/$name";
           };
@@ -47,7 +47,7 @@
         enabled = true;
         default_model = {
           provider = "google";
-          model = "gemini-2.0-flash";
+          model = "gemini-2.5-flash";
         };
       };
     };

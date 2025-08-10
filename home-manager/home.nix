@@ -23,6 +23,7 @@ in {
     # You can add overlays here
     overlays = [
       inputs.nix-matlab.overlay
+      # inputs.nix-vscode-extensions.overlays.default
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -101,9 +102,12 @@ in {
       inputs.insanity.packages.${pkgs.system}.default
     ];
 
+  fonts.fontconfig.enable = true;
+
   # Enable home-manager
   programs.home-manager.enable = true;
 
+  # Matlab desktop entry
   xdg.desktopEntries.matlab = {
     categories = ["Utility" "TextEditor" "Development" "IDE"];
     icon = "matlab";

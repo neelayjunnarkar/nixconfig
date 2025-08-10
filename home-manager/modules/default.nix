@@ -13,5 +13,6 @@
     ./zeditor.nix
     ./zathura.nix
     ./syncthing.nix
+    ./vscode.nix
   ];
 }

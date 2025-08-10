@@ -14,7 +14,6 @@
     stylix = {
       url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
 
     # Matlab
@@ -28,6 +27,8 @@
       url = "github:nix-community/nixvim/nixos-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     # Insanity voice chat.
     insanity = {
