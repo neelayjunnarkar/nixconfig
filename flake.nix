@@ -16,11 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Matlab
-    nix-matlab = {
-      url = "gitlab:doronbehar/nix-matlab";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # # Matlab
+    # nix-matlab = {
+    #   url = "gitlab:doronbehar/nix-matlab";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Neovim
     nixvim = {
@@ -32,7 +32,7 @@
 
     # Insanity voice chat.
     insanity = {
-      url = "github:nicolaschan/insanity/c2d8d875a659fefeb7f1e01b26d7dda328f77e17";
+      url = "github:nicolaschan/insanity/71f19a641efb2f792547750b4f1e73a85b360d81";
       # Package takes too long to build..
       # inputs.nixpkgs.follows = "nixpkgs";
     };

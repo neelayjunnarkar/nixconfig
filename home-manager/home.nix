@@ -22,7 +22,7 @@ in {
   nixpkgs = {
     # You can add overlays here
     overlays = [
-      inputs.nix-matlab.overlay
+      # inputs.nix-matlab.overlay
       # inputs.nix-vscode-extensions.overlays.default
       # Or define it inline, for example:
       # (final: prev: {
@@ -78,7 +78,7 @@ in {
       rhythmbox
       easyeffects
       discord
-      matlab
+      # matlab
       zoom-us
       slack
       onlyoffice-bin_latest
@@ -116,7 +116,7 @@ in {
     name = "Matlab";
     type = "Application";
     # version = "1.4";
-    exec = "nvidia-offload matlab -desktop -nosoftwareopengl %F";
+    exec = "nvidia-offload /home/neelay/.local/bin/matlab -desktop -nosoftwareopengl %F";
   };
 
   # Nicely reload system units when changing configs
