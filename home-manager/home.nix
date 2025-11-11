@@ -7,10 +7,7 @@
   pkgs,
   pkgs-unstable,
   ...
-}: let
-  # Script to run programs on the nvidia gpu
-  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" (builtins.readFile ./scripts/nvidia-offload);
-in {
+}: {
   # You can import other home-manager modules here
   imports = [
     ./modules
@@ -69,7 +66,7 @@ in {
       polylux2pdfpc # polylux notes generator for pdfpc
       pdfpc # pdf presentation software
       (python3.withPackages (ps: [ps.numpy]))
-      nvidia-container-toolkit
+      amdgpu_top
       # Graphical applications
       firefox
       chromium
@@ -78,25 +75,26 @@ in {
       rhythmbox
       easyeffects
       discord
-      # matlab
+      lmstudio
       zoom-us
       slack
-      onlyoffice-bin_latest
+      onlyoffice-desktopeditors
       # kicad
       prismlauncher
       orca-slicer
       freecad-wayland
       inkscape
       syncthing
-      unityhub # for asset-guarding engagements project
+      # unityhub # for asset-guarding engagements project
       vlc
       bottles
+      blender-hip
       # Fonts
       iosevka
       newcomputermodern
     ])
     ++ (with pkgs-unstable; [
-      grayjay
+      # grayjay
     ])
     ++ [
       inputs.insanity.packages.${pkgs.system}.default
@@ -110,13 +108,13 @@ in {
   # Matlab desktop entry
   xdg.desktopEntries.matlab = {
     categories = ["Utility" "TextEditor" "Development" "IDE"];
-    icon = "matlab";
+    icon = "/home/neelay/distrobox/main/MATLAB/R2025b/bin/glnxa64/cef_resources/matlab_icon.png";
     # keywords = ["science" "math" "matrix" "numerical" "computation" "plotting"];
     mimeType = ["text/x-octave" "text/x-matlab"];
     name = "Matlab";
     type = "Application";
     # version = "1.4";
-    exec = "nvidia-offload /home/neelay/.local/bin/matlab -desktop -nosoftwareopengl %F";
+    exec = "/home/neelay/.local/bin/matlab -desktop %F";
   };
 
   # Nicely reload system units when changing configs

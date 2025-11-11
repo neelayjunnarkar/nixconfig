@@ -66,19 +66,12 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
-  # FIXME: Add the rest of your current configuration
-
   boot.kernelPackages = pkgs.linuxPackages; # linuxPackages, linuxPackages_latest, linuxPackages_6_12
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # TODO: Set your hostname
-  networking.hostName = "waffle";
+  networking.hostName = "backpack";
   networking.networkmanager.enable = true;
-  # networking.networkmanager.insertNameservers = [
-  #   "8.8.8.8"
-  #   "1.1.1.1"
-  # ];
 
   time.timeZone = "America/Los_Angeles";
 
@@ -97,8 +90,10 @@
   };
 
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
+  # services.desktopManager.cosmic.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -139,50 +134,9 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [
     "modesetting"
-    "nvidia"
+    "amdgpu"
   ];
 
-  hardware.nvidia-container-toolkit.enable = true;
-  hardware.nvidia = {
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    # Enable this if you have graphical corruption issues or application crashes after waking
-    # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
-    # of just the bare essentials.
-    powerManagement.enable = true;
-
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = true;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of
-    # supported GPUs is at:
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-    # Only available from driver 515.43.04+
-    open = true;
-
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.latest; # production, latest, beta
-
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;
-      };
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-  };
-
-  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     neelay = {
       # TODO: You can set an initial password for your user.
@@ -215,6 +169,10 @@
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
+  };
+
+  programs.corectrl = {
+    enable = true;
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
