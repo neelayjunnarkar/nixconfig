@@ -3,16 +3,16 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Stylix for theming.
     stylix = {
-      url = "github:nix-community/stylix/release-25.05";
+      url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -24,7 +24,7 @@
 
     # Neovim
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.05";
+      url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -32,7 +32,7 @@
 
     # Insanity voice chat.
     insanity = {
-      url = "github:nicolaschan/insanity/71f19a641efb2f792547750b4f1e73a85b360d81";
+      url = "github:nicolaschan/insanity/f95cc3d909120fc02c65276d3e51adcd8a45feac";
       # Package takes too long to build..
       # inputs.nixpkgs.follows = "nixpkgs";
     };

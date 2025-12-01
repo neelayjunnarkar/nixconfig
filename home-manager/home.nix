@@ -81,16 +81,17 @@ in {
       # matlab
       zoom-us
       slack
-      onlyoffice-bin_latest
+      onlyoffice-desktopeditors
       # kicad
       prismlauncher
       orca-slicer
       freecad-wayland
       inkscape
       syncthing
-      unityhub # for asset-guarding engagements project
+      # unityhub # for asset-guarding engagements project
       vlc
       bottles
+      blender
       # Fonts
       iosevka
       newcomputermodern
@@ -99,7 +100,7 @@ in {
       grayjay
     ])
     ++ [
-      inputs.insanity.packages.${pkgs.system}.default
+      inputs.insanity.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
   fonts.fontconfig.enable = true;
