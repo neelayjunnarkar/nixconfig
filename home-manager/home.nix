@@ -83,6 +83,7 @@
       prismlauncher
       orca-slicer
       freecad-wayland
+      plasticity
       inkscape
       syncthing
       # unityhub # for asset-guarding engagements project

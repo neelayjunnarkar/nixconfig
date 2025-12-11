@@ -21,6 +21,8 @@
       switch-to-application-4 = [];
       switch-to-application-5 = [];
       switch-to-application-6 = [];
+      # Setup screenshot shortcut
+      show-screen-recording-ui = ["<Shift><Super>s"];
     };
     "org/gnome/desktop/wm/keybindings" = {
       switch-to-workspace-1 = ["<Super>1"];
@@ -57,8 +59,6 @@
       # xkb-options = ["ctrl:swapcaps"];
       xkb-options = ["ctrl:nocaps"];
     };
-    # Setup screenshot shortcut.
-    # "org/gnome/shell/keybindings/show-screenshot-ui" = ["<Shift><Super>s"];
     # Setup browser shortcut.
     "org/gnome/settings-daemon/plugins/media-keys" = {
       www = ["<Shift><Super>Return"];
@@ -90,6 +90,10 @@
     "org/gnome/desktop/peripherals/touchpad" = {
       speed = 0.6;
       accel-profile = "flat";
+    };
+    "org/gnome/desktop/session" = {
+      # Screen blank after 15 minutes
+      idle-delay = 900;
     };
   };
 }

@@ -17,6 +17,9 @@
   boot.initrd.kernelModules = ["amdgpu"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
+  boot.extraModprobeConfig = ''
+    options snd_hda_intel power_save=0
+  '';
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/ffb9303f-0dd1-473b-afee-cd68dcfbc490";
