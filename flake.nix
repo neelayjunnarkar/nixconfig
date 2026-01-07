@@ -32,7 +32,7 @@
 
     # Insanity voice chat.
     insanity = {
-      url = "github:nicolaschan/insanity/f95cc3d909120fc02c65276d3e51adcd8a45feac";
+      url = "github:nicolaschan/insanity/e30e18618fb0b27a179082712d1b964b46c8cde8";
       # Package takes too long to build..
       # inputs.nixpkgs.follows = "nixpkgs";
     };

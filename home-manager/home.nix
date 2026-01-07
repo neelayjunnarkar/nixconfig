@@ -97,7 +97,7 @@ in {
       newcomputermodern
     ])
     ++ (with pkgs-unstable; [
-      grayjay
+      # grayjay
     ])
     ++ [
       inputs.insanity.packages.${pkgs.stdenv.hostPlatform.system}.default

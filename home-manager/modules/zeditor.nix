@@ -5,11 +5,11 @@
 }: {
   programs.zed-editor = {
     enable = true;
-    # package = pkgs.zed-editor.fhs;
-    package = pkgs-unstable.zed-editor;
-    extensions = ["typst" "nix" "rainbow-csv" "csharp" "matlab"];
+    package = pkgs.zed-editor;
+    # package = pkgs-unstable.zed-editor;
+    extensions = ["typst" "nix" "rainbow-csv" "csharp" "matlab" "ruff"];
     # TODO: use this when it becomes an option
-    extraPackages = with pkgs; [alejandra nil tinymist rust-analyzer omnisharp-roslyn]; # Rn doesn't have the option
+    extraPackages = with pkgs; [alejandra nil tinymist rust-analyzer omnisharp-roslyn ruff]; #  ++ (with pkgs-unstable; [ty]);
     userSettings = {
       auto_update = false;
       # theme set with Stylix
@@ -28,6 +28,7 @@
           binary.path_lookup = true;
         };
         omnisharp.binary.path_lookup = true;
+        # ty.binary.path_lookup = true;
       };
       languages = {
         "Nix" = {
@@ -39,6 +40,9 @@
         };
         "Markdown" = {
           soft_wrap = "editor_width";
+        };
+        "Python" = {
+          "language_servers" = ["basedpyright"];
         };
       };
 
