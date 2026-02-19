@@ -68,8 +68,9 @@ in {
       typst
       polylux2pdfpc # polylux notes generator for pdfpc
       pdfpc # pdf presentation software
-      (python3.withPackages (ps: [ps.numpy]))
+      (python3.withPackages (ps: [ps.numpy ps.cvxpy ps.scipy ps.matplotlib ps.sympy ps.jupyterlab]))
       nvidia-container-toolkit
+      nvtopPackages.full
       # Graphical applications
       firefox
       chromium
