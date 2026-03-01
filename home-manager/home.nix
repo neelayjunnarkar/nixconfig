@@ -65,8 +65,9 @@
       typst
       polylux2pdfpc # polylux notes generator for pdfpc
       pdfpc # pdf presentation software
-      (python3.withPackages (ps: [ps.numpy]))
+      (python3.withPackages (ps: [ps.numpy ps.scipy ps.cvxpy ps.matplotlib ps.sympy ps.jupyterlab]))
       amdgpu_top
+      nvtopPackages.full
       # Graphical applications
       firefox
       chromium
@@ -76,6 +77,7 @@
       easyeffects
       discord
       lmstudio
+      heroic
       zoom-us
       slack
       onlyoffice-desktopeditors

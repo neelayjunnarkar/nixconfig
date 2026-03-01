@@ -127,6 +127,9 @@
     ];
   };
 
+  # Error logging
+  # hardware.rasdaemon.enable = true;
+
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [
     "modesetting"

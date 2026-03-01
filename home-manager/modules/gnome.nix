@@ -22,7 +22,7 @@
       switch-to-application-5 = [];
       switch-to-application-6 = [];
       # Setup screenshot shortcut
-      show-screen-recording-ui = ["<Shift><Super>s"];
+      show-screenshot-ui = ["<Shift><Super>s"];
     };
     "org/gnome/desktop/wm/keybindings" = {
       switch-to-workspace-1 = ["<Super>1"];

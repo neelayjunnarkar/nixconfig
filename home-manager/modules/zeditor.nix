@@ -45,7 +45,8 @@
           soft_wrap = "editor_width";
         };
         "Python" = {
-          language_servers = ["ty" "!basedpyright"];
+          # language_servers = ["ty" "!basedpyright"];
+          language_servers = ["basedpyright"];
         };
       };
 
