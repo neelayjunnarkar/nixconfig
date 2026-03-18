@@ -1,4 +1,4 @@
-# Thisis your home-manager configuration file
+# This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
@@ -33,7 +33,7 @@
       # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = _: true;
+      # allowUnfreePredicate = _: true;
     };
   };
 
@@ -68,6 +68,9 @@
       (python3.withPackages (ps: [ps.numpy ps.scipy ps.cvxpy ps.matplotlib ps.sympy ps.jupyterlab]))
       amdgpu_top
       nvtopPackages.full
+      xauth
+      xhost
+      waypipe
       # Graphical applications
       firefox
       chromium

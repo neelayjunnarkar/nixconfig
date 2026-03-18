@@ -7,7 +7,6 @@
     enable = true;
     package = pkgs.zed-editor;
     extensions = ["typst" "nix" "rainbow-csv" "csharp" "matlab" "ruff"];
-    # TODO: use this when it becomes an option
     extraPackages = with pkgs; [alejandra nil tinymist rust-analyzer omnisharp-roslyn ruff ty];
     userSettings = {
       auto_update = false;
@@ -29,7 +28,7 @@
         omnisharp.binary.path_lookup = true;
         ruff.binary.path_lookup = true;
         ty.binary = {
-          path_lookup = "true";
+          path_lookup = true;
           arguments = ["server"];
         };
       };
@@ -45,8 +44,8 @@
           soft_wrap = "editor_width";
         };
         "Python" = {
-          # language_servers = ["ty" "!basedpyright"];
-          language_servers = ["basedpyright"];
+          language_servers = ["ty" "!basedpyright"];
+          # language_servers = ["basedpyright"];
         };
       };
 

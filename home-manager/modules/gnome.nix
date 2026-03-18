@@ -59,12 +59,9 @@
       # xkb-options = ["ctrl:swapcaps"];
       xkb-options = ["ctrl:nocaps"];
     };
-    # Setup browser shortcut.
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      www = ["<Shift><Super>Return"];
-    };
     # Setup custom shortcuts.
     "org/gnome/settings-daemon/plugins/media-keys" = {
+      www = ["<Shift><Super>Return"];
       custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal" = {
