@@ -42,8 +42,6 @@
       cycle-windows-backward = ["<Shift><Alt>Tab"];
       switch-applications = [];
       switch-applications-backward = [];
-      # Screenshot
-      # show-screenshot-ui = ["<Shift><Super>s"];
     };
     # Number of workspaces
     "org/gnome/desktop/wm/preferences" = {
@@ -53,11 +51,6 @@
     "org/gnome/mutter" = {
       edge-tiling = true;
       dynamic-workspaces = false;
-    };
-    # Swap control and caps lock.
-    "org/gnome/desktop/input-sources" = {
-      # xkb-options = ["ctrl:swapcaps"];
-      xkb-options = ["ctrl:nocaps"];
     };
     # Setup custom shortcuts.
     "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -71,6 +64,8 @@
     };
     # Keyboards
     "org/gnome/desktop/input-sources" = {
+      # xkb-options = ["ctrl:swapcaps"]; # Swap control and caps lock.
+      xkb-options = ["ctrl:nocaps"];
       sources = [
         (lib.hm.gvariant.mkTuple ["xkb" "us"])
         (lib.hm.gvariant.mkTuple ["xkb" "us+colemak_dh_ortho"])
