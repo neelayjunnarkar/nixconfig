@@ -65,7 +65,7 @@
       typst
       polylux2pdfpc # polylux notes generator for pdfpc
       pdfpc # pdf presentation software
-      (python3.withPackages (ps: [ps.numpy ps.scipy ps.cvxpy ps.matplotlib ps.sympy ps.jupyterlab]))
+      (python3.withPackages (ps: [ps.numpy ps.scipy ps.cvxpy ps.matplotlib ps.sympy ps.jupyterlab ps.torch]))
       amdgpu_top
       nvtopPackages.full
       xauth
