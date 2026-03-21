@@ -6,10 +6,23 @@
   programs.zed-editor = {
     enable = true;
     package = pkgs.zed-editor;
-    # package = pkgs-unstable.zed-editor;
-    extensions = ["typst" "nix" "rainbow-csv" "csharp" "matlab" "ruff"];
-    # TODO: use this when it becomes an option
-    extraPackages = with pkgs; [alejandra nil tinymist rust-analyzer omnisharp-roslyn ruff]; #  ++ (with pkgs-unstable; [ty]);
+    extensions = [
+      "typst"
+      "nix"
+      "rainbow-csv"
+      "csharp"
+      "matlab"
+      "ruff"
+    ];
+    extraPackages = with pkgs; [
+      alejandra
+      nil
+      tinymist
+      rust-analyzer
+      omnisharp-roslyn
+      ruff
+      ty
+    ];
     userSettings = {
       auto_update = false;
       # theme set with Stylix
@@ -18,8 +31,11 @@
           binary.path_lookup = true;
           initialization_options.cargo.features = "all";
         };
-        nix.binary.path_lookup = true;
         nil.binary.path_lookup = true;
+        alejandra.binary = {
+          path = "alejandra";
+          path_lookup = true;
+        };
         tinymist = {
           settings = {
             exportPdf = "onType";
@@ -28,12 +44,21 @@
           binary.path_lookup = true;
         };
         omnisharp.binary.path_lookup = true;
-        # ty.binary.path_lookup = true;
+        ruff.binary.path_lookup = true;
+        ty.binary = {
+          path = "ty";
+          path_lookup = true;
+          arguments = ["server"];
+        };
       };
       languages = {
         "Nix" = {
-          language_servers = ["nil" "!nixd"];
-          format_on_save.external.command = "alejandra";
+          language_servers = [
+            "alejandra"
+            "nil"
+            "!nixd"
+          ];
+          formatter.external.command = "alejandra";
         };
         "Typst" = {
           soft_wrap = "editor_width";
@@ -42,16 +67,18 @@
           soft_wrap = "editor_width";
         };
         "Python" = {
-          "language_servers" = ["basedpyright"];
-        };
-      };
-
-      assistant = {
-        version = "2";
-        enabled = true;
-        default_model = {
-          provider = "google";
-          model = "gemini-2.5-flash";
+          language_servers = [
+            "ty"
+            "ruff"
+            "!basedpyright"
+            "..."
+          ];
+          format_on_save = "on";
+          code_actions_on_format = {
+            "source.organizeImports.ruff" = true;
+            "source.fixAll.ruff" = true;
+          };
+          formatter.language_server.name = "ruff";
         };
       };
     };

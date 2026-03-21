@@ -21,6 +21,8 @@
       switch-to-application-4 = [];
       switch-to-application-5 = [];
       switch-to-application-6 = [];
+      # Setup screenshot shortcut
+      show-screenshot-ui = ["<Shift><Super>s"];
     };
     "org/gnome/desktop/wm/keybindings" = {
       switch-to-workspace-1 = ["<Super>1"];
@@ -40,8 +42,6 @@
       cycle-windows-backward = ["<Shift><Alt>Tab"];
       switch-applications = [];
       switch-applications-backward = [];
-      # Screenshot
-      # show-screenshot-ui = ["<Shift><Super>s"];
     };
     # Number of workspaces
     "org/gnome/desktop/wm/preferences" = {
@@ -52,19 +52,9 @@
       edge-tiling = true;
       dynamic-workspaces = false;
     };
-    # Swap control and caps lock.
-    "org/gnome/desktop/input-sources" = {
-      # xkb-options = ["ctrl:swapcaps"];
-      xkb-options = ["ctrl:nocaps"];
-    };
-    # Setup screenshot shortcut.
-    # "org/gnome/shell/keybindings/show-screenshot-ui" = ["<Shift><Super>s"];
-    # Setup browser shortcut.
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      www = ["<Shift><Super>Return"];
-    };
     # Setup custom shortcuts.
     "org/gnome/settings-daemon/plugins/media-keys" = {
+      www = ["<Shift><Super>Return"];
       custom-keybindings = ["/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal/"];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/terminal" = {
@@ -74,6 +64,8 @@
     };
     # Keyboards
     "org/gnome/desktop/input-sources" = {
+      # xkb-options = ["ctrl:swapcaps"]; # Swap control and caps lock.
+      xkb-options = ["ctrl:nocaps"];
       sources = [
         (lib.hm.gvariant.mkTuple ["xkb" "us"])
         (lib.hm.gvariant.mkTuple ["xkb" "us+colemak_dh_ortho"])
@@ -90,6 +82,10 @@
     "org/gnome/desktop/peripherals/touchpad" = {
       speed = 0.6;
       accel-profile = "flat";
+    };
+    "org/gnome/desktop/session" = {
+      # Screen blank after 15 minutes
+      idle-delay = 900;
     };
   };
 }
