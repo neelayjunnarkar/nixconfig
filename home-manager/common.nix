@@ -42,7 +42,12 @@
       zoom-us
       slack
       onlyoffice-desktopeditors
-      prismlauncher
+      (prismlauncher.override {
+        jdks = [
+          pkgs.jdk8
+          pkgs.jdk25
+        ];
+      })
       orca-slicer
       freecad-wayland
       inkscape
