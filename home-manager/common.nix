@@ -31,6 +31,7 @@
       xauth
       xhost
       waypipe
+      claude-code
       # Graphical applications
       firefox
       chromium

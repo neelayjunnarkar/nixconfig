@@ -71,6 +71,7 @@
         (lib.hm.gvariant.mkTuple ["xkb" "us+colemak_dh_ortho"])
         (lib.hm.gvariant.mkTuple ["xkb" "in+marathi"])
       ];
+      per-window = false; # Testing if this fixes lock screen input source switching
       # TODO: What is mru-sources?
       mru-sources = [(lib.hm.gvariant.mkTuple ["xkb" "us"])];
     };
