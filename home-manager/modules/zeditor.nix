@@ -7,7 +7,7 @@
     enable = true;
     package = pkgs.zed-editor;
     extensions = [
-      "typst"
+      # "typst"
       "nix"
       "rainbow-csv"
       "csharp"
@@ -17,7 +17,7 @@
     extraPackages = with pkgs; [
       alejandra
       nil
-      tinymist
+      # tinymist
       rust-analyzer
       omnisharp-roslyn
       ruff
@@ -36,13 +36,13 @@
           path = "alejandra";
           path_lookup = true;
         };
-        tinymist = {
-          settings = {
-            exportPdf = "onType";
-            outputPath = "$root/$dir/$name";
-          };
-          binary.path_lookup = true;
-        };
+        # tinymist = {
+        #   settings = {
+        #     exportPdf = "onType";
+        #     outputPath = "$root/$dir/$name";
+        #   };
+        #   binary.path_lookup = true;
+        # };
         omnisharp.binary.path_lookup = true;
         ruff.binary.path_lookup = true;
         ty.binary = {
