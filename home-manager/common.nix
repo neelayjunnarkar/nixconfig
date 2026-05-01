@@ -32,6 +32,8 @@
       xhost
       waypipe
       claude-code
+      # poppler
+      poppler-utils
       # Graphical applications
       firefox
       chromium
