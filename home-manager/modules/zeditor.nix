@@ -13,6 +13,7 @@
       "csharp"
       "matlab"
       "ruff"
+      "latex"
     ];
     extraPackages = with pkgs; [
       alejandra
@@ -22,6 +23,7 @@
       omnisharp-roslyn
       ruff
       ty
+      texlab
     ];
     userSettings = {
       auto_update = false;
@@ -49,6 +51,32 @@
           path = "ty";
           path_lookup = true;
           arguments = ["server"];
+        };
+        texlab = {
+          settings = {
+            texlab = {
+              build = {
+                executable = "latexmk";
+                args = [
+                  "-pdf"
+                  "-interaction=nonstopmode"
+                  "-synctex=1"
+                  "-outdir=.build"
+                  "%f"
+                ];
+                onSave = true;
+                forwardSearchAfter = true;
+              };
+              forwardSearch = {
+                executable = "zathura";
+                args = [
+                  "--synctex-forward"
+                  "%l:1:%f"
+                  "%p"
+                ];
+              };
+            };
+          };
         };
       };
       languages = {
