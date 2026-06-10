@@ -26,7 +26,7 @@
       typst
       polylux2pdfpc
       pdfpc
-      (python3.withPackages (ps: [ps.numpy ps.scipy ps.cvxpy ps.matplotlib ps.sympy ps.jupyterlab ps.torch ps.pandas ps.polars]))
+      (python3.withPackages (ps: [ps.numpy ps.scipy ps.cvxpy ps.matplotlib ps.sympy ps.jupyterlab ps.torch ps.pandas ps.polars ps.scikit-learn]))
       nvtopPackages.full
       xauth
       xhost
