@@ -15,7 +15,7 @@
   # Extend the shared package set with backpack-specific packages.
   home.packages = with pkgs; [
     amdgpu_top
-    blender-hip
+    pkgsRocm.blender
   ];
 
   xdg.desktopEntries.matlab = lib.mkForce {

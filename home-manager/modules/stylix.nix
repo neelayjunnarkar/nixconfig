@@ -6,10 +6,10 @@
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
     opacity.terminal = 0.9;
-    fonts.monospace = {
-      package = pkgs.cascadia-code;
-      name = "Cascadia Code NF";
-    };
+    # fonts.monospace = {
+    #   package = pkgs.nerd-fonts.caskaydia-cove;
+    #   name = "CaskaydiaCove Nerd Font Mono";
+    # };
     targets = {
       firefox.enable = false;
       fish.enable = true;

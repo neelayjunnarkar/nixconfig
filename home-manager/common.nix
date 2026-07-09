@@ -33,7 +33,7 @@
       waypipe
       claude-code
       poppler-utils
-      wineWowPackages.stable
+      wineWow64Packages.stable
       # Graphical applications
       firefox
       chromium
@@ -57,12 +57,13 @@
       syncthing
       vlc
       bottles
-      plasticity
+      # plasticity
       lmstudio
       heroic
       # Fonts
       iosevka
       newcomputermodern
+      nerd-fonts.caskaydia-cove
     ]
     ++ (with pkgs-unstable; [
       ])
