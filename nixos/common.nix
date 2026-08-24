@@ -53,7 +53,7 @@
   ###########################################################################
   # Basic system / localization
   ###########################################################################
-  # time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/Los_Angeles";
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -165,7 +165,7 @@
   # Miscellaneous
   ###########################################################################
 
-  services.geoclue2.enable = true; # For IP-based geolocation for time zone
+  # services.geoclue2.enable = true; # For IP-based geolocation for time zone
 
   system.stateVersion = "24.05";
 }
