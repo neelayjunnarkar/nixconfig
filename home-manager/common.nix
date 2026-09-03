@@ -32,7 +32,6 @@
       xauth
       xhost
       waypipe
-      claude-code
       poppler-utils
       wineWow64Packages.stable
       # Graphical applications
@@ -58,8 +57,6 @@
       syncthing
       vlc
       bottles
-      # plasticity
-      lmstudio
       heroic
       # Fonts
       iosevka
