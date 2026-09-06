@@ -26,6 +26,7 @@
       texlab
     ];
     userSettings = {
+      load_direnv = "direct";
       auto_update = false;
       # theme set with Stylix
       lsp = {

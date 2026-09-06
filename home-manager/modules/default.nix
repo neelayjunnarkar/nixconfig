@@ -14,5 +14,6 @@
     ./zathura.nix
     ./syncthing.nix
     ./vscode.nix
+    ./direnv.nix
   ];
 }
