@@ -15,5 +15,6 @@
     ./syncthing.nix
     ./vscode.nix
     ./direnv.nix
+    ./opencode.nix
   ];
 }

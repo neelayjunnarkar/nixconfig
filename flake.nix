@@ -30,7 +30,7 @@
     insanity = {
       url = "github:nicolaschan/insanity/f011350ac56603b34a941414265cb945e30676a5";
       # Package takes too long to rebuild every nixpkgs update
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

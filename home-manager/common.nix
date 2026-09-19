@@ -64,8 +64,7 @@
       nerd-fonts.caskaydia-cove
     ]
     ++ (with pkgs-unstable; [
-      opencode
-    ])
+      ])
     ++ [
       inputs.insanity.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
