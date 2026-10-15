@@ -34,6 +34,7 @@
       waypipe
       poppler-utils
       wineWow64Packages.stable
+      gh
       # Graphical applications
       firefox
       chromium
