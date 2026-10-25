@@ -14,7 +14,6 @@ in {
   home.packages =
     [nvidia-offload]
     ++ (with pkgs; [
-      nvidia-container-toolkit
       blender
     ]);
 

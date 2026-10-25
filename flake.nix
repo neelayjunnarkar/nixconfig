@@ -21,14 +21,12 @@
     # Neovim
     nixvim = {
       url = "github:nix-community/nixvim/nixos-26.05";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     # Insanity voice chat
     insanity = {
-      url = "github:nicolaschan/insanity/f011350ac56603b34a941414265cb945e30676a5";
+      url = "github:nicolaschan/insanity/v1.7.8";
       # Package takes too long to rebuild every nixpkgs update
       # inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -77,20 +75,5 @@
         specialArgs = commonSpecialArgs;
       };
     };
-
-    # Home Manager top-level configurations
-    # homeConfigurations = {
-    #   neelay-waffle = home-manager.lib.homeManagerConfiguration {
-    #     inherit pkgs;
-    #     modules = [./home-manager/waffle-home.nix];
-    #     extraSpecialArgs = commonSpecialArgs;
-    #   };
-
-    #   neelay-backpack = home-manager.lib.homeManagerConfiguration {
-    #     inherit pkgs;
-    #     modules = [./home-manager/backpack-home.nix];
-    #     extraSpecialArgs = commonSpecialArgs;
-    #   };
-    # };
   };
 }

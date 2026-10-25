@@ -33,12 +33,6 @@
     settings = {
       # Enable the new Nix CLI and flakes
       experimental-features = "nix-command flakes";
-
-      # Opinionated: disable global registry unless you explicitly want it
-      flake-registry = "";
-
-      # Workaround to allow modules to read nix-path when necessary
-      nix-path = config.nix.nixPath;
     };
 
     # Disable legacy channels by default
@@ -123,7 +117,6 @@
   # Virtualisation / containers
   ###########################################################################
   virtualisation = {
-    containers.enable = true;
     podman = {
       enable = true;
       dockerCompat = true;

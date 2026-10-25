@@ -53,7 +53,7 @@
         ];
       })
       orca-slicer
-      freecad-wayland
+      freecad
       inkscape
       syncthing
       vlc

@@ -4,6 +4,7 @@
   ];
   programs.nixvim = {
     enable = true;
+    nixpkgs.source = inputs.nixpkgs;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
@@ -36,7 +37,7 @@
 
       treesitter = {
         enable = true;
-        settings.indent.enable = true;
+        indent.enable = true;
       };
 
       cmp.enable = true;
